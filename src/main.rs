@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
 
+mod hardening;
 
 #[derive(Parser)]
 #[clap(arg_required_else_help = true)]
@@ -26,19 +27,15 @@ struct Cli {
 
 #[derive(Subcommand)]
 pub enum Commands {
-    /// does testing things
-    Test,
+    /// guided step by step os hardening
+    Harden,
 }
 
 fn main() {
     let cli = Cli::parse();
 
     match &cli.command {
-        Some(Commands::Test) => test(),
-        None => test()
+        Some(Commands::Harden) => hardening::init_harden(),
+        None => hardening::init_harden()
     }
-}
-
-fn test() {
-    println!("this is testing...")
 }
