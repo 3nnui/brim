@@ -3,7 +3,19 @@ use clap::{Subcommand};
 pub use clap::Parser;
 
 #[derive(Parser)]
-#[command(author, version, about, long_about = None)]
+#[command(name = "Brim")]
+#[command(author = "3nnui")]
+#[command(version = "1.0")]
+#[command(about = "
+▀█████████▄     ▄████████  ▄█    ▄▄▄▄███▄▄▄▄   
+  ███    ███   ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ 
+  ███    ███   ███    ███ ███▌ ███   ███   ███ 
+ ▄███▄▄▄██▀   ▄███▄▄▄▄██▀ ███▌ ███   ███   ███ 
+▀▀███▀▀▀██▄  ▀▀███▀▀▀▀▀   ███▌ ███   ███   ███ 
+  ███    ██▄ ▀███████████ ███  ███   ███   ███ 
+  ███    ███   ███    ███ ███  ███   ███   ███ 
+▄█████████▀    ███    ███ █▀    ▀█   ███   █▀  
+               ███    ███                      ")]
 pub struct Cli {
     /// Optional name to operate on
     pub name: Option<String>,
