@@ -21,19 +21,12 @@ pub use clap::Parser;
                
 Fedora post install tool for some moderate hardening...")]
 pub struct Cli {
-    /// Optional name to operate on
-    pub name: Option<String>,
-
     #[command(subcommand)]
-    command: Option<Commands>,
+    pub command: Option<Commands>,
 }
 
 #[derive(Subcommand)]
-enum Commands {
+pub enum Commands {
     /// does testing things
-    Test {
-        /// lists test values
-        #[arg(short, long)]
-        list: bool,
-    },
+    Test,
 }

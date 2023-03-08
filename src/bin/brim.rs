@@ -1,9 +1,14 @@
-use brim::cli::{Cli, Parser};
+use brim::cli::{Cli, Parser, Commands};
 
 fn main() {
     let cli = Cli::parse();
 
-    if let Some(name) = cli.name.as_deref() {
-        println!("Value for name: {name}");
+    match &cli.command {
+        Some(Commands::Test) => test(),
+        None => test()
     }
+}
+
+fn test() {
+    println!("this is testing...")
 }
