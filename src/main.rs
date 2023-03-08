@@ -1,6 +1,6 @@
 use clap::{Parser, Subcommand};
 
-mod hardening;
+mod harden;
 
 #[derive(Parser)]
 #[clap(arg_required_else_help = true)]
@@ -35,7 +35,7 @@ fn main() {
     let cli = Cli::parse();
 
     match &cli.command {
-        Some(Commands::Harden) => hardening::init_harden(),
-        None => hardening::init_harden()
+        Some(Commands::Harden) => harden::init_hardening(),
+        None => ()
     }
 }
