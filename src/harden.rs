@@ -1,5 +1,5 @@
 pub mod kernel;
 
-pub fn init_hardening() {
+pub fn configure_hardening() {
     println!("init hardening");
 }

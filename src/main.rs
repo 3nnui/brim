@@ -35,7 +35,7 @@ fn main() {
     let cli = Cli::parse();
 
     match &cli.command {
-        Some(Commands::Harden) => harden::init_hardening(),
+        Some(Commands::Harden) => harden::configure_hardening(),
         None => ()
     }
 }
