@@ -2,7 +2,9 @@ use clap::{Subcommand};
 
 pub use clap::Parser;
 
+
 #[derive(Parser)]
+#[clap(arg_required_else_help = true)]
 #[command(name = "Brim")]
 #[command(author = "3nnui")]
 #[command(version = "1.0")]
