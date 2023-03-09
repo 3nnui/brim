@@ -1,4 +1,4 @@
-use std::process::{self, exit};
+use std::process::{self};
 use std::error::Error;
 use inquire::{MultiSelect, list_option::ListOption, validator::Validation};
 
@@ -31,11 +31,16 @@ impl<'a> Config<'a> {
 
 pub fn harden_os() {
     let feat_components = vec!["Kernel"];
-    
+
     let config = Config::inquire(feat_components).unwrap_or_else(|err| {
         println!("Error in inquiring OS components: {}", err);
         process::exit(1);
     });
 
-
+    for comp in config.components.iter() {
+        match comp {
+            &"Kernel" => kernel::harden_kernel(),
+            &_ => panic!("unknown OS Component!")
+        }
+    }
 }
