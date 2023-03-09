@@ -1,25 +1,26 @@
 use std::error::Error;
-use std::process;
-use inquire::{MultiSelect, InquireError};
+use inquire::{MultiSelect};
 
 pub mod kernel;
 
-const featured_components: Vec<&str> = vec!["Kernel"];
-
-pub struct Config<'a> {
+#[derive(Debug)]
+struct Config<'a> {
     components: Vec<& 'a str>,
 }
 
 impl<'a> Config<'a> {
-    pub fn inquire() -> Result<Config<'a>, Box<dyn Error>> {
+    fn inquire(feat_components: Vec<&'a str>) -> Result<Config<'a>, Box<dyn Error>> {
         let ans = MultiSelect::new(
             "Select the os Components which are to be hardened:",
-            featured_components)
-            .prompt().unwrap_or_else(|err: InquireError| {
-                println!("Problem parsing arguments: {}", err);
-                process::exit(1);
-            });
+            feat_components)
+            .prompt().unwrap();
 
        Ok(Config{ components: ans})
     }
+}
+
+pub fn harden_os() {
+    let feat_components = vec!["Kernel"];
+    let config = Config::inquire(feat_components);
+    print!("Debug {:?}", config);
 }
