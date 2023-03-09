@@ -1,5 +1,5 @@
 use std::error::Error;
-use inquire::{MultiSelect};
+use inquire::{MultiSelect, list_option::ListOption, validator::Validation};
 
 pub mod kernel;
 
@@ -10,12 +10,21 @@ struct Config<'a> {
 
 impl<'a> Config<'a> {
     fn inquire(feat_components: Vec<&'a str>) -> Result<Config<'a>, Box<dyn Error>> {
+
+        let validator = |a: &[ListOption<&&str>]| {
+            if a.len() < 1 {
+                return Ok(Validation::Invalid("Select at least one OS component.".into()));
+            }
+            Ok(Validation::Valid)
+        };
+
         let ans = MultiSelect::new(
             "Select the os Components which are to be hardened:",
             feat_components)
+            .with_validator(validator)
             .prompt().unwrap();
 
-       Ok(Config{ components: ans})
+        Ok(Config{ components: ans})
     }
 }
 
