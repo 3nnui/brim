@@ -6,7 +6,7 @@ pub mod kernel;
 
 const featured_components: Vec<&str> = vec!["Kernel"];
 
-struct Config<'a> {
+pub struct Config<'a> {
     components: Vec<& 'a str>,
 }
 
