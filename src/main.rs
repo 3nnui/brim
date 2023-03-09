@@ -1,4 +1,3 @@
-use std::process;
 use clap::{Parser, Subcommand};
 
 mod harden;
