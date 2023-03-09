@@ -46,3 +46,7 @@ The sources for the used hardening principles:
 ## Authors
 
 - [3nnui](https://github.com/3nnui)
+
+## License
+
+[![Hippocratic License HL3-LAW-MIL-SOC-SV-USTA](https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-LAW-MIL-SOC-SV-USTA&labelColor=5e2751&color=bc8c3d)](https://firstdonoharm.dev/version/3/0/law-mil-soc-sv-usta.html)
